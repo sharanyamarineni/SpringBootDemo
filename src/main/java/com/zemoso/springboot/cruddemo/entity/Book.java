@@ -17,28 +17,42 @@ public class Book {
 	private int id;
 	
 	@Column(name = "title",unique = true)
+//	@NoDuplicates
 	private String title;
 	
 	@NotNull(message="is required")	
 	@Size(min=1,message = "is required")
 	@Column(name = "author_name")
-	private String author_name;
+	//@Pattern(regexp="^[A-Za-z]*$",message = "Invalid Input")
+	private String authorName;
 	
 	@Column(name="price")
 	private Double price;
-	
+	 @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH})
+	    @JoinColumn(name="user_id")
+	    private Users users;
+	public Users getUsers() {
+		return users;
+	}
+
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+
 	public Book() {
 		
 	}
 	
 
 	public Book(int id, String title,
-			@NotNull(message = "is required") @Size(min = 1, message = "is required") String author_name, Double price,
+			@NotNull(message = "is required") @Size(min = 1, message = "is required") String authorName, Double price,
 			String category) {
 	
 		this.id = id;
 		this.title = title;
-		this.author_name = author_name;
+		this.authorName = authorName;
 		this.price = price;
 		this.category = category;
 	}
@@ -54,7 +68,7 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", title=" + title + ", author_name=" + author_name + ", price=" + price
+		return "Book [id=" + id + ", title=" + title + ", author_name=" + authorName + ", price=" + price
 				+ ", category=" + category + "]";
 	}
 
@@ -74,13 +88,16 @@ public class Book {
 		this.title = title;
 	}
 
-	public String getAuthor_name() {
-		return author_name;
+
+	public String getAuthorName() {
+		return authorName;
 	}
 
-	public void setAuthor_name(String author_name) {
-		this.author_name = author_name;
+
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
 	}
+
 
 	public String getCategory() {
 		return category;

@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -26,6 +27,14 @@ public class Users {
 	private int enabled;
 	@Column(name = "email")
 	private String email;
+	 @OneToMany(mappedBy="users",cascade= {CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH, CascadeType.REFRESH,CascadeType.REMOVE})
+	 private List<Book> books;
+	public List<Book> getBooks() {
+		return books;
+	}
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -50,19 +59,4 @@ public class Users {
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
-//	@ManyToMany(fetch=FetchType.LAZY,
-//			cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-//			 CascadeType.DETACH, CascadeType.REFRESH})
-//	@JoinTable(
-//			name="users_roles",
-//			joinColumns=@JoinColumn(name="username"),
-//			inverseJoinColumns=@JoinColumn(name="auth_username")
-//			)
-//	private List<Authorities> roles;
-//	public List<Authorities> getRoles() {
-//		return roles;
-//	}
-//	public void setRoles(List<Authorities> roles) {
-//		this.roles = roles;
-//	}
 }

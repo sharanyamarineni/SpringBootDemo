@@ -14,24 +14,24 @@ public class BookConverter {
 		BookDto dto = new BookDto();
 		dto.setId(book.getId());
 		dto.setTitle(book.getTitle());
-		dto.setAuthor_name(book.getAuthor_name());
+		dto.setAuthorName(book.getAuthorName());
 		dto.setCategory(book.getCategory());
 		dto.setPrice(book.getPrice());
 		return dto;
 	}
 	public List<BookDto> entityToDto(List<Book> book){
-		return book.stream().map(x->entityToDto(x)).collect(Collectors.toList());
+		return book.stream().map(this::entityToDto).collect(Collectors.toList());
 	}
 	public Book dtoToEntity(BookDto dto) {
 		Book bk = new Book();
 		bk.setId(dto.getId());
 		bk.setTitle(dto.getTitle());
-		bk.setAuthor_name(dto.getAuthor_name());
+		bk.setAuthorName(dto.getAuthorName());
 		bk.setCategory(dto.getCategory());
 		bk.setPrice(dto.getPrice());
 		return bk;
 	}
 	public List<Book> dtoToEntity(List<BookDto> dto){
-		return dto.stream().map(x->dtoToEntity(x)).collect(Collectors.toList());
+		return dto.stream().map(this::dtoToEntity).collect(Collectors.toList());
 	}
 }

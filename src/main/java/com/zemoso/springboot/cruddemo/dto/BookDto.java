@@ -15,11 +15,12 @@ public class BookDto {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getAuthor_name() {
-		return author_name;
+
+	public String getAuthorName() {
+		return authorName;
 	}
-	public void setAuthor_name(String author_name) {
-		this.author_name = author_name;
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
 	}
 	public String getCategory() {
 		return category;
@@ -28,7 +29,7 @@ public class BookDto {
 		this.category = category;
 	}
 	private String title;
-	private String author_name;
+	private String authorName;
 	private String category;
 	private Double price;
 	public Double getPrice() {

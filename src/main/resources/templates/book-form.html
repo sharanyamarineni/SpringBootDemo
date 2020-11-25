@@ -36,9 +36,9 @@
  		     <p th:if="${#fields.hasErrors('title')}" class="text-danger" th:errors="*{title}">Incorrect LP</p>					
 				
 
-			<input type="text" th:field="*{author_name}"
+			<input type="text" th:field="*{authorName}"
 					class="form-control mb-4 col-4" placeholder=" * Author name">
- 			<p th:if="${#fields.hasErrors('author_name')}" class="text-danger" th:errors="*{author_name}">Incorrect LP</p>					
+ 			<p th:if="${#fields.hasErrors('authorName')}" class="text-danger" th:errors="*{authorName}">Incorrect LP</p>					
 
 			<input type="text" th:field="*{category}"
 					class="form-control mb-4 col-4" placeholder="Category">

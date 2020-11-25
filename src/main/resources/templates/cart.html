@@ -46,7 +46,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<h3>Books Cart</h3>
 	</div>
 	
-	<!--  <div class="cart" th:text="${#session.getAttribute('title')}">TITLE</div> -->	
+
 	
 <div th:if="${session.cart!=null and !session.cart.isEmpty()}">
 <form method="post"
@@ -68,10 +68,8 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 			<tr th:each="item:${session.cart}">
 		
 				<td th:text="${item.book.title}" />	
-				<td th:text="${item.book.author_name}"/>	
-				
-			<!-- 	<td th:text="${#session.getAttribute('category')}" />	 -->
-			
+				<td th:text="${item.book.authorName}"/>	
+							
 				<td th:text="${item.book.category}"/>	
 				<td><input type="text" name="quantity"  th:value="${item.quantity}" style="width: 60px"></td>
 				<td th:text="${item.quantity*item.book.price}"/>	
@@ -83,13 +81,10 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 						Remove
 					</a>
 				</td>
-				<!--  <p th:with="totalPrice=${totalPrice + item.book.price}"> </p>  -->
 			</tr>
 		<tr>
 			<td colspan="4" align="right">Sum</td>
-		<!-- 	<p th:with="totalPrice=${totalPrice + item.book.price}"> </p>  -->
 			  <td><b th:text="${#aggregates.sum(session.cart.![quantity*book.price])}" /></td>
-			<!--  <td th:text="${total}" /> -->
 		</tr>
 		</tbody>		
 	</table> 

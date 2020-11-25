@@ -33,19 +33,4 @@ public class Authorities {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
-//	@ManyToMany(fetch=FetchType.LAZY,
-//			cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-//			 CascadeType.DETACH, CascadeType.REFRESH})
-//	@JoinTable(
-//			name="users_roles",
-//			joinColumns=@JoinColumn(name="auth_username"),
-//			inverseJoinColumns=@JoinColumn(name="username")
-//			)	
-//	private List<Users> users;
-//	public List<Users> getUsers() {
-//		return users;
-//	}
-//	public void setUsers(List<Users> users) {
-//		this.users = users;
-//	}
 }

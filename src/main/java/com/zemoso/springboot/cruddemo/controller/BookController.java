@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +28,8 @@ import com.zemoso.springboot.cruddemo.service.BookService;
 @RequestMapping("/books")
 public class BookController {
 	
-	
+	private static final Logger logger = LoggerFactory.getLogger(BookController.class);
+
 	private BookService bookService;
 
 	public BookController(BookService theBookService) {
@@ -88,7 +91,7 @@ public class BookController {
 		return "book-form";	
 		}
 		catch(Exception exc){
-			System.out.println("id not found");
+			logger.info("id not found");
 		}
 		return "access-denied";
 				
